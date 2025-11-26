@@ -309,7 +309,7 @@ local function downloadFile(path, func)
 		local suc, res = pcall(function()
 			local subbed = path:gsub('catrewrite/', '')
 			subbed = subbed:gsub(' ', '%%20')
-			return game:HttpGet('https://raw.githubusercontent.com/new-qwertyui/CatV5/'..readfile('catrewrite/profiles/commit.txt')..'/'..subbed, true)
+			return game:HttpGet('https://raw.githubusercontent.com/wrealaero/CatV5/'..readfile('catrewrite/profiles/commit.txt')..'/'..subbed, true)
 		end)
 		if not suc or res == '404: Not Found' then
 			error(res)
@@ -362,7 +362,7 @@ if (not license.Developer and not shared.VapeDeveloper) then
 		makestage(2, 'Downloading config, This may take up to 20s')
 
 		local preloaded = pcall(function()
-			local req = httpService:JSONDecode(game:HttpGet('https://api.github.com/repos/new-qwertyui/CatV5/contents/profiles'))
+			local req = httpService:JSONDecode(game:HttpGet('https://api.github.com/repos/wrealaero/CatV5/contents/profiles'))
 
 			for _, v in req do
 				if v.path ~= 'profiles/commit.txt' then
@@ -380,7 +380,7 @@ if (not license.Developer and not shared.VapeDeveloper) then
 	if #listfiles('catrewrite/translations') <= 2 then
 		makestage(2, 'Downloading languages, this may take a bit')
 	
-		local req = httpService:JSONDecode(game:HttpGet('https://api.github.com/repos/new-qwertyui/CatV5/contents/translations'))
+		local req = httpService:JSONDecode(game:HttpGet('https://api.github.com/repos/wrealaero/CatV5/contents/translations'))
 
 		for _, v in req do
 			makestage(2, `Downloading {v.name} language`)
@@ -391,7 +391,7 @@ if (not license.Developer and not shared.VapeDeveloper) then
 	if not canDebug and Updated then
 		makestage(2, `Downloading {({identifyexecutor()})[1]} support, this may take a bit`)
 	
-		local req = httpService:JSONDecode(game:HttpGet('https://api.github.com/repos/new-qwertyui/CatV5/contents/cache'))
+		local req = httpService:JSONDecode(game:HttpGet('https://api.github.com/repos/wrealaero/CatV5/contents/cache'))
 
 		for _, v in req do
 			pcall(downloadFile, `catrewrite/{v.path}`)
